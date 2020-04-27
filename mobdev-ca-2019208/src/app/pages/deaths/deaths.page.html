@@ -1,0 +1,22 @@
+<ion-header>
+	<ion-toolbar color="danger">
+		<ion-title>
+			<h1> Deaths </h1>
+		</ion-title>
+
+		<ion-toolbar color="danger">
+			<ion-searchbar placeholder="Look for keywords..." (ionChange)="searchDeath($event)"></ion-searchbar>
+		</ion-toolbar>
+	</ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+	<ion-list>
+		<ion-item *ngFor="let death of deaths | async | deathsfilter: searchText1">
+			<p> {{ death.death }} </p>
+			<label> <p> ---- Cause : ------ </p> </label>
+			<label> <p> {{ death.cause}}</p> </label>
+		</ion-item>
+	</ion-list>
+</ion-content>

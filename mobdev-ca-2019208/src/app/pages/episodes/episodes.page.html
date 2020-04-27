@@ -1,0 +1,23 @@
+<ion-header>
+
+	<ion-toolbar color="primary">
+
+		<ion-title>
+			<h1>Episodes</h1>
+		</ion-title>
+
+	</ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<div>
+		<ion-list>
+			<ion-item button detail lines="inset" *ngFor="let episode of episodes | async"
+				(click)="openDetails(episode)">
+				<label > <p >{{ episode.title }} </p> </label>
+			</ion-item>
+		</ion-list>
+	</div>
+</ion-content>

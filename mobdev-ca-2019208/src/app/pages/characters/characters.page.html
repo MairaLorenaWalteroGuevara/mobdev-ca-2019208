@@ -1,0 +1,26 @@
+<ion-header>
+
+	<ion-toolbar color="primary">
+
+		<ion-title>
+			<h1>Characters</h1>
+		</ion-title>
+
+	</ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+<div>
+	<ion-list>
+		<ion-item button detail lines="inset" *ngFor="let character of characters " (click)="openDetails(character)">
+			<label><p>{{ character.name }}</p> </label>
+		</ion-item>
+	</ion-list>
+
+	<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+		<ion-infinite-scroll-content loadingSpinner="bubble" loadingText="load more Characters">
+		</ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</div>
+</ion-content>
