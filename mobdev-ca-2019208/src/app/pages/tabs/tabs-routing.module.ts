@@ -3,10 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { TabsPage } from './tabs.page';
 const routes: Routes = [
     {
+        // create the tabs for the pages 
+        // tabs/episodes is going to open episodes 
+        //tabs/eqpisodes/id is gonna open episodes details
+        // we are defined the route with loadclidren, in this case the pages can use lazy loading. 
+        //Also this is necessary to add in the app routing module.ts, to have the route of the tabs for the app. 
+        //lazy loading is a desing pattern that dolad only  what need to be necessary instead all loading the hole webapp. 
+        // this help to the efficiency. 
+        
+        
         path: 'tabs',
         component: TabsPage,
         children: [
             {
+                
                 path: 'episodes',
                 children: [
                     {

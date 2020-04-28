@@ -10,10 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class QuotesPage implements OnInit {
 
+    // cteate a quotes varible to storage all the elements from the apiservice from http://breakingbad.api 
     quotes: Observable<any>;
+
+    // Ad array to storage all my varibles quotes 
     items: any[] =[]; 
+    // variable to storage the text writing in the searchbar from my html 
     searchText='';
-// api and router = they are the name to use the ApiService and Router in this classs
+
   constructor(private router:Router, private api:ApiService) { }
 
   ngOnInit() {
@@ -22,6 +26,7 @@ export class QuotesPage implements OnInit {
       this.initializeItems(); 
   }
   
+  // Open the details page from the quotes 
   openDetails(quotes){
       let quotesId = quotes.quote_id; 
       this.router.navigateByUrl(`/tabs/quotes/${quotesId}`);

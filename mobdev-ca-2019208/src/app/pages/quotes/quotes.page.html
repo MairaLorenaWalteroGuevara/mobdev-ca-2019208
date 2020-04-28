@@ -1,11 +1,18 @@
 <ion-header>
 	<ion-toolbar color="success">
-
+    <!--
+        the color I use is success in order to give a Style also I am using the scss page to add style
+        to the headears, paragraphs 
+    -->
 		<ion-title>
 			<h1> Quotes </h1>
 		</ion-title>
 	</ion-toolbar>
 	<ion-toolbar color="success">
+    <!--
+        In quotes we are creating the seach bar with ion-seachbar int there 
+        I specified the method I am going to use in my quote.page.ts with my variable event
+    -->
 		<ion-searchbar placeholder="Search Quotes" animated (ionChange)="searchQuote( $event )">
 		</ion-searchbar>
 	</ion-toolbar>
@@ -13,6 +20,12 @@
 
 <ion-content>
 	<ion-list>
+    <!--
+        the ngFor is a interaction  with the array and creating elements with the same type (information taking from mikhail-cct-github-io/mobdev/w4)
+        async is using because our varible quotes is observable so this is telling to observe the varible
+        filter is a pipe (a module),  I created to run the method that check the input from my user (saving in my varible searText) comparing with my arrary of quotes
+        in other words this pipe run the filter of the words storage in serachText and match with the info in an array of quotes, returning the match. 
+    -->
 		<ion-item button detail lines="inset" *ngFor="let quote of quotes | async | filter : searchText"
 			(click)="openDetails(quote)">
 			<label> <p>	{{ quote.quote }} </p> </label>
