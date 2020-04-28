@@ -32,6 +32,10 @@ export class QuotesPage implements OnInit {
       this.router.navigateByUrl(`/tabs/quotes/${quotesId}`);
   }
 
+//this method get the storage the inforamtion inside of quotes variable using the api service
+// Subscribe is a method that comes from rxjs library 
+// Subscribe call the observable and this.items = [], take the staff inside of the observable an put inside of the array
+
   initializeItems(){
       this.quotes=this.api.getQuotes(); 
       this.quotes.subscribe(item => {
@@ -41,29 +45,15 @@ export class QuotesPage implements OnInit {
       });
 
   }
-
+  // for this method // it is necessary to import the pipe module in module.ts
   //event is the name of the property that i have for this method 
   searchQuote(event){
+      //value is the variable  of the input from the user in the browser
+    //event target value returns the element from the input
+
       const text = event.target.value; 
       this.searchText = text; 
-  //   this.searchText = event.detail.value;
-    //    const text = event.target.href;
-        
-    //      this.initializeItems(); 
-        
-    //  if (text && text.trim()!=''){
-    //        this.items=this.items.filter((quote)=>{
-    //            return(quote.author.toLowerCase().includes(text.toLowerCase())>-1);
-    //        })
-    //    }
-   
-    //  const text = event.target.author; 
-    //    if (text && text.trim()!=''){
-    //        this.items=this.items.filter((quote)=>{
-    //            return(quote.toLowerCase().indexOf(text.toLowerCase())>-1);
-     //       })
-    //    }
-      //this.searchText = text; 
+ // I am taking "text" constant and storage in searchtext in order to use it in the search filter in the html. 
       console.log(text); 
   }
 }

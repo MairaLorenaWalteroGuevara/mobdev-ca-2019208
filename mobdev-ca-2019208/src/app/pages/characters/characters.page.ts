@@ -5,136 +5,70 @@ import { ApiService } from '../../services/api.service';
 
 
 @Component({
-  selector: 'app-characters',
-  templateUrl: './characters.page.html',
-  styleUrls: ['./characters.page.scss'],
+    selector: 'app-characters',
+    templateUrl: './characters.page.html',
+    styleUrls: ['./characters.page.scss'],
 })
 
 
 export class CharactersPage implements OnInit {
 
-  //  @ViewChild(IonInfiniteScroll, {static:false}) infiniteScroll:IonInfiniteScroll;
-   // characters: Observable<any>; 
-   // data : Observable<any>; 
-    
-    characters= []; 
-    //numeros= []; 
-    offset=0; 
-    maximumOffset=65;
-  //  maximumPages = 4; 
+    // I create a variable type array to put all the elements or characters from the api 
+    characters = [];
+    // the offset is to start the count of element 0 in the array and the maximum to limited the dowlonload characters to 65
+    offset = 0;
+    maximumOffset = 65;
 
 
-  constructor(private router:Router, private api:ApiService) { }
 
-  ngOnInit() {
-    //  this.characters=this.api.getCharacters(this.page); 
-    //  this.characters.subscribe(data => {
-   //       console.log(data); 
-   
-   
-   // this.characters=this.api.getCharacters(this.page);
-   //    this.characters.subscribe(data => {
-    //    console.log('mydata',data); 
-    //      this.results = data;
-     //     this.numeros=this.numeros.concat(this.results);
-     //   console.log(this.numeros);
-   // });
+    constructor(private router: Router, private api: ApiService) { }
+
+    ngOnInit() {
+
+        // run the method loadcharcaters and getting the items from the api. 
+        this.loadCharacters();
+
+    }
+
+    loadCharacters(event?) {
+
+        // to get the info using the getCharacters method from the api service  
+        //and putting in the characters variable, also I am concatenate the two arrays
+        // in order to get 10 elements from the array put in this array  
+        this.api.getCharacters(this.offset).subscribe(data => {
+            console.log('mydata', data);
+            this.characters = this.characters.concat(data);
 
 
-    this.loadCharacters(); 
-  
-}
-   
-  loadCharacters(event?){
-     
-   // if (loadMore){
-     //  this.offset +=10; 
- //   console.log(this.page); 
-   // }
-    this.api.getCharacters(this.offset).subscribe(data => {
-        console.log('mydata',data); 
-        this.characters=this.characters.concat(data);
-        //    this.results = data;
-        //    this.numeros=this.numeros.concat(this.results);
-            //console.log(this.numeros);
+            if (event) {
+                event.target.complete();
+            }
+
+        })
+
+    }
+
+    // this is a loadMore method call from the html for the infinitive scroll
+    // this method is going to run the method loadCharacters(), getting only 10 character each time
+    //and if all the characters are already download the function are disable.
+    loadMore(event?) {
+
+        // to set how many characters I want to download each time, in this case 10 
+        this.offset = this.offset + 10;
         
-        if (event){
-         event.target.complete();
+        this.loadCharacters(event);
+
+        if (this.offset > this.maximumOffset) {
+            event.target.disable = true;
         }
-
-
-    })
-
+        
+    }
     
-
-
-}
-  //    this.api.getCharacters(this.page).subscribe(res =>{
-        //console.log(res);
-   //      this.characters = this.characters.concat(this.character); 
-      
-    //  if (event){
-    //      event.target.complete(); 
-    //  }
-    //  });
- // }
-  //loadCharacters(loadMore=false){
-
-   // if (loadMore){
-   //     this.offset +=20; 
-   //     console.log(this.offset); 
-   // }
-
-  //    this.api.getCharacters(this.page).subscribe(res =>{
-   //     console.log(res);
-   //      this.characters = this.characters.concat(res['data']); 
-   //   });
-  //}
-
-  loadMore(event?){
-     // this.offset++; 
-    
-      console.log(event);
-
-      this.offset = this.offset + 10; 
-
-         this.loadCharacters(event);
-
-     if (this.offset> this.maximumOffset){
-         event.target.disable = true; 
-     }
-    //      event.target.disabled = true; 
-    //  }
-
-    //  setTimeout(() => {
-     //       event.target.complete(this.loadCharacters(event));
-     //       if (this.numeros.length > 63) {
-     //           event.target.disabled = true;
-     //       }
-    //    }, 500);
-
-
-     
-      
-    //  this.page++;
-    //  this.loadCharacters(event);
-      
-    //  if(this.page===this.maximumPages){
-     //     event.target.disabled = true; 
-      }
-  //}
-  //loadMore(event){
-  //    setTimeout(()=>{
-  //        event.target.complete(this.loadCharacters(event));
-  //        if (this.characters.length>58){
-  //            event.target.disabled =true; 
-  //        }
-  //    },500);
-  //}
-
-  openDetails(character){
-      let characterId = character.char_id; 
-      this.router.navigateByUrl(`/tabs/characters/${characterId}`);
-  }
+    // To take the variable from api calle char_id and the router.navigateByUrl is the route path.
+    // and activate the open datails. 
+    openDetails(character) {
+        let characterId = character.char_id;
+        this.router.navigateByUrl(`/tabs/characters/${characterId}`);
+    }
 
 }

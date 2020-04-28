@@ -11,7 +11,10 @@ export class FavouriteService {
  
   constructor(private storage: Storage) { }
  
+
   // add constructors with 4 funtions, to have favorite or unfavorite episodes
+  // methos than compare and Storage the episodes or characters  using a Key for episodes and Key1 for characters
+  // Inforamtion from https://mikhail-cct.github.io/mobdev/wk7/#/
   getAllFavouriteEpisodes() {
     return this.storage.get(STORAGE_KEY);
   }

@@ -1,27 +1,45 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start" defaulthref="/tabs/episodes">
-     <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title> <h2> {{ episode?.title }} </h2> </ion-title>
-    <ion-buttons slot="end">
-    <ion-button (click)="unfavouriteEpisode()" *ngIf="isFavourite">
-    <ion-icon name="star" slot="icon-only"></ion-icon>
-    </ion-button>
-    <ion-button (click)="favouriteEpisode()" *ngIf="!isFavourite">
-      <ion-icon name="star-outline" slot="icon-only"></ion-icon>
-    </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+	<ion-toolbar color="primary">
+		<!--
+        defaultHref is the attribute for the ion-back-button that always show the back-button and go back to tabs/episodes. 
+        the style of the each detail page is in css and match the style in the app 
+        -->
+
+		<ion-buttons slot="start" defaulthref="/tabs/episodes">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+		<!--
+        Episode?title  is going to show me the title of each episode
+        When you click is going to run the method favoriteEpisode() or UnfavoriteEpisode()
+        *ngIf is puting the information in the array of isFavourite or deleted from them
+        Slot is the icon using for the favourite 
+        -->
+
+		<ion-title>
+			<h2> {{ episode?.title }} </h2>
+		</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="unfavouriteEpisode()" *ngIf="isFavourite">
+				<ion-icon name="star" slot="icon-only"></ion-icon>
+			</ion-button>
+			<ion-button (click)="favouriteEpisode()" *ngIf="!isFavourite">
+				<ion-icon name="star-outline" slot="icon-only"></ion-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
 </ion-header>
-	
+
 <ion-content padding>
- 
-<ion-card *ngIf="episode">
-  <ion-card-content>
-    <p>{{ episode.season }}</p>
-  </ion-card-content>
-  <ul>{{ episode.characters }} </ul>
-</ion-card>
- 
+
+	<ion-card *ngIf="episode">
+		<ion-card-content>
+			<!--
+            I am showing the number of the season and characters in the episode with the paragraph style 
+            -->
+
+			<p>{{ episode.season }}</p>
+		</ion-card-content>
+		<ul>{{ episode.characters }} </ul>
+	</ion-card>
+
 </ion-content>

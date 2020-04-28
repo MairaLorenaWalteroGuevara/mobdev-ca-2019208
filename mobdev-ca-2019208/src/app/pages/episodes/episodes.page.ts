@@ -19,17 +19,12 @@ export class EpisodesPage implements OnInit {
     constructor(private router: Router, private api: ApiService) { }
 
   ngOnInit() {
-      this.episodes = this.api.getEpisodes(); 
-      // with this code or witout the app run normally 
-      this.episodes.subscribe(data => 
-        {console.log('my data: ', data);
-      });
-
-      
+      // to get the info using the getEpisode method from the api service  and putting in the episodes Observable variable 
+      this.episodes = this.api.getEpisodes();      
   }
 
   
-
+    // this method take the variable from api calle episode_id and the router.navigateByUrl is the route path. 
   openDetails(episode){
       let episodeId = episode.episode_id; 
       this.router.navigateByUrl(`/tabs/episodes/${episodeId}`);

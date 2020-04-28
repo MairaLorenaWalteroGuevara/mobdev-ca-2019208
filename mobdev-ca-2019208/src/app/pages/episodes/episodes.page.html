@@ -2,6 +2,11 @@
 
 	<ion-toolbar color="primary">
 
+<!--
+The color and the Style I used in here if it is relate with breaking bad colors. 
+and the style is in the css file
+-->
+
 		<ion-title>
 			<h1>Episodes</h1>
 		</ion-title>
@@ -14,8 +19,17 @@
 <ion-content padding>
 	<div>
 		<ion-list>
+        <!--
+	        the ngFor is a interaction  with the array and creating elements with the same type (information taking from mikhail-cct-github-io/mobdev/w4)
+	        async is using because our variable episodes is observable so this is telling to observe the variable
+	    -->
+
 			<ion-item button detail lines="inset" *ngFor="let episode of episodes | async"
 				(click)="openDetails(episode)">
+                <!-- 
+                I am showing the title of the episodes in a list. 
+                -->
+
 				<label > <p >{{ episode.title }} </p> </label>
 			</ion-item>
 		</ion-list>

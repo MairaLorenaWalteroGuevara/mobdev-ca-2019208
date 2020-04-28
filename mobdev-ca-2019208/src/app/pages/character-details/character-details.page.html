@@ -1,5 +1,10 @@
 <ion-header>
 	<ion-toolbar color="primary">
+    <!--
+    defaultHref is the attribute for the ion-back-button that always show the back-button and go back to tabs/characters. 
+    the style of the each detail page is in css and match the style in the app 
+    -->
+
 		<ion-buttons slot="start" defaulthref="/tabs/character">
 			<ion-back-button></ion-back-button>
 		</ion-buttons>
@@ -7,6 +12,11 @@
 			<h2>Character Details </h2>
 		</ion-title>
 		<ion-buttons slot="end">
+        <!--
+        When you click is going to run the method favoriteEpisode() or UnfavoriteEpisode()
+        *ngIf is puting the information in the array of isFavourite or deleted from them
+        Slot is the icon using for the favourite 
+        -->
 			<ion-button (click)="unfavouriteCharacter()" *ngIf="isFavourite">
 				<ion-icon name="star" slot="icon-only"></ion-icon>
 			</ion-button>
@@ -21,6 +31,9 @@
 
 
 	<ion-card *ngIf="character">
+        <!--
+            I am Showing the name, nickname and status of each character using the stayle of paragraph in css forder
+        -->
 		<ion-card-content>
 		<p>	{{ character.name }}</p>
 		</ion-card-content>

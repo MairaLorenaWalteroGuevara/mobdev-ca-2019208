@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./quote-details.page.scss'],
 })
 export class QuoteDetailsPage implements OnInit {
-
+    
+    // I using quote variable to storage  all the quoteId in the array.
      quote: any; 
-    isFavourite =false; 
+    // I am creating a quoteId variable to storage all the info from the http.api.
     quoteId=null; 
 
   constructor(private activatedRoute: ActivatedRoute, private api:ApiService) { }

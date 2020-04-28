@@ -1,5 +1,10 @@
 <ion-header>
 	<ion-toolbar color="success">
+		<!--
+        defaultHref is the attribute for the ion-back-button that always show the back-button and go back to tabs/quotes. 
+        the style of the each detail page is in css and match the style in the app 
+        -->
+
 		<ion-buttons slot="start">
 			<ion-back-button defaulthref="/tabs/quotes"></ion-back-button>
 		</ion-buttons>
@@ -14,8 +19,14 @@
 	<ion-card *ngIf="quote">
 		<ion-card-content>
 			<ion-list>
+            <!--
+            I am showing the quote and the author with the stlype of p from the css 
+            -->
+
 				<p> {{ quote.quote }} </p>
-				<ion-label> <p>Author: </p> </ion-label>
+				<ion-label>
+					<p>Author: </p>
+				</ion-label>
 				<p> {{ quote.author }} </p>
 			</ion-list>
 		</ion-card-content>

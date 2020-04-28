@@ -1,6 +1,11 @@
 <ion-header>
 
 	<ion-toolbar color="primary">
+		<!--
+        The color and the Style I used in here, it is related with breaking bad colors. 
+        and the style of headers and paraphras is in the css file
+        -->
+
 
 		<ion-title>
 			<h1>Characters</h1>
@@ -11,16 +16,30 @@
 </ion-header>
 
 <ion-content>
-<div>
-	<ion-list>
-		<ion-item button detail lines="inset" *ngFor="let character of characters " (click)="openDetails(character)">
-			<label><p>{{ character.name }}</p> </label>
-		</ion-item>
-	</ion-list>
+	<div>
+		<ion-list>
+        <!--
+	        the ngFor is a interaction  with the array and creating elements with the same type (information taking from mikhail-cct-github-io/mobdev/w4)
+	        async is using because our variable characters is observable so this is telling to observe the variable
+	    -->
 
-	<ion-infinite-scroll (ionInfinite)="loadMore($event)">
-		<ion-infinite-scroll-content loadingSpinner="bubble" loadingText="load more Characters">
-		</ion-infinite-scroll-content>
-	</ion-infinite-scroll>
-</div>
+			<ion-item button detail lines="inset" *ngFor="let character of characters "
+				(click)="openDetails(character)">
+                <!-- 
+                I am showing the name of the character in a list. 
+                -->
+
+				<label><p>{{ character.name }}</p> </label>
+			</ion-item>
+		</ion-list>
+        <!--
+        I am downloading more characters creating a infinity scroll method call loadMore using an event property
+        Loading Spinner is a property of the scroll that is going to show load more characters. 
+        -->
+
+		<ion-infinite-scroll (ionInfinite)="loadMore($event)">
+			<ion-infinite-scroll-content loadingSpinner="bubble" loadingText="load more Characters">
+			</ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+	</div>
 </ion-content>
