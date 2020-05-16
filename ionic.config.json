@@ -1,8 +1,5 @@
 {
-  "name": "mobdev-ca-2019208",
-  "integrations": {
-    "cordova": {},
-    "capacitor": {}
-  },
+  "name": "New Ionic App",
+  "integrations": {},
   "type": "angular"
 }
