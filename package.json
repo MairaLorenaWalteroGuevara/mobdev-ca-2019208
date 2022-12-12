@@ -46,7 +46,7 @@
     "cordova-sqlite-storage": "^5.0.0",
     "core-js": "^2.5.4",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "g": "^2.0.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
